@@ -1,4 +1,12 @@
+# Complétion 
 # /etc/zsh/zshrc: system-wide .zshrc file for zsh(1).
+#   _________  _   _ ____   ____ 
+#  |__  / ___|| | | |  _ \ / ___|
+#    / /\___ \| |_| | |_) | |    
+# _ / /_ ___) |  _  |  _ <| |___ 
+#(_)____|____/|_| |_|_| \_\\____|
+#
+ 
 #
 # This file is sourced only for interactive shells. It
 # should contain commands to set up aliases, functions,
@@ -102,10 +110,32 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
 
 (( ${+aliases[run-help]} )) && unalias run-help
 autoload -Uz run-help
+
+###config perso
+
+## config auto completion
 autoload -U compinit
 compinit
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BDésolé, pas de résultats pour : %d%b'
 zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+
+
+## alias 
+# locaux
+alias la="ls -a"
+alias ll="ls -l"
+alias lll='ls --color=auto -lh | less'
+alias sl='ls'
+export GREP_COLOR=31
+alias grep='grep --color=auto'
+# suffixes
+alias -g G=' | grep '
+
+# Un petit prompt sympa
+autoload -U promptinit
+promptinit
+prompt adam2
+
 
