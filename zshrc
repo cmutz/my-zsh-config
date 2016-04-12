@@ -138,4 +138,6 @@ autoload -U promptinit
 promptinit
 prompt adam2
 
-
+## Permet de se connecter a une session tmux a travers un tunnel ssh
+## creer la session si elle existe pas
+function ssh2_tmux() { ssh -t "$1" tmux new-session -t cmutz || ssh -t "$1" tmux new-session -s cmutz; }
